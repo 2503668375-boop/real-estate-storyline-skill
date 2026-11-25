@@ -20,10 +20,10 @@
 把下面这句话复制到 Codex，等安装完成后开一个新会话使用。
 
 ```text
-请用 $skill-installer 安装地产故事线 Skill。仓库是 2503668375-boop/real-estate-storyline-skill，分支是 main，Skill 在仓库根目录（--path .），安装名使用 real-estate-storyline-8-1。已有同名 Skill 时先核对版本。
+请完整下载或克隆 GitHub 仓库 2503668375-boop/real-estate-storyline-skill 的 main 分支，把 SKILL.md、agents/、references/、scripts/ 一起放到当前项目的 .agents/skills/real-estate-storyline-8-1/，并检查入口、参考资料和脚本是否齐全。已有同名 Skill 时先核对版本。
 ```
 
-手动安装也可以。点击绿色 **Code → Download ZIP**，解压后将整个文件夹命名为 `real-estate-storyline-8-1`，放到当前项目的 `.agents/skills/`。个人所有项目共用时，放到 `~/.agents/skills/`。保留 `SKILL.md`、`agents/`、`references/` 和 `scripts/` 的相对位置。
+手动安装也可以。点击[下载 ZIP](https://github.com/2503668375-boop/real-estate-storyline-skill/archive/refs/heads/main.zip)，解压后将整个文件夹命名为 `real-estate-storyline-8-1`，放到当前项目的 `.agents/skills/`。个人所有项目共用时，放到 `~/.agents/skills/`。保留 `SKILL.md`、`agents/`、`references/` 和 `scripts/` 的相对位置。
 
 ## 试用
 
