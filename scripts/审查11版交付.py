@@ -51,7 +51,7 @@ def audit(folder):
     except (ValueError,TypeError):
         errors.append('项目基准日无效'); asof=dt.date.today()
     modes=card.get('需输出模块',[])
-    if not isinstance(modes,list) or not modes or any(x not in {'市场','经营','价值','操盘','成品'} for x in modes):
+    if not isinstance(modes,list) or not modes or any(x not in {'市场','经营','价值','操盘','成品','故事线'} for x in modes):
         errors.append('需输出模块无效'); modes=[]
     ledger=read('证据台账.json')
     records=ledger.get('证据',[])
@@ -180,8 +180,12 @@ def audit(folder):
         if qa.get('状态')=='通过' and any(x!='通过' for x in qa.get('逐项检查',{}).values()):
             errors.append('成品总状态通过但存在未通过的检查项')
         sections['成品']='核验文件与验收记录存在；视觉判断由记录责任人承担'
+    if card.get('技能版本') in {'11.2','11.3'}:
+        module('审查故事线成果').audit_outputs(folder,card,set(indexed),errors,warnings,sections)
+    elif '故事线' in modes:
+        errors.append('故事线模块须使用技能版本11.2或11.3及对应交付责任')
     review=card.get('策略复核',{})
-    if card.get('技能版本')=='11.1' and ({'价值','成品'} & set(modes)):
+    if card.get('技能版本') in {'11.1','11.2','11.3'} and ({'价值','故事线','成品'} & set(modes)):
         expression=read('表达验收.json')
         require(expression,['稿件文件','SHA256','复核人','复核类型','内容去AI','文学表达','重点句','修改记录','复述记录'],'表达验收')
         p=folder/str(expression.get('稿件文件','__missing__'))
